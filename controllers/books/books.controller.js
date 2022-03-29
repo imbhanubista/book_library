@@ -1,4 +1,5 @@
 const Books = require('../../models/books.models')
+const Users = require('../../models/users.models')
 const jwt = require('jsonwebtoken')
 const { addBookVerify } = require('../../helpers/validator.helper')
 
@@ -79,12 +80,19 @@ exports.deleteBooks = async (req,res)=>{
 
     try{
         let deletetoken = jwt.verify(token, process.env.JWT_SECRET)
+        if(Users.isAdmin ===false){
+            res.json({
+                type:"error",
+                msg:"Only admin are eligible for this task"
+            })
+        }
+        else{
         let dataToDelete = await Books.deleteOne({_id:id})
         res.json({
             type:"success",
             msg:"Successfully Deleted"
         })
-    }
+    }}
     catch(err){
         res.json({
             type:"error",

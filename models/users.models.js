@@ -10,7 +10,8 @@ const userSchema = mongoose.Schema({
     adddress: String,
     phone: Number,
     password: String,
-    photo: String
+    photo: String,
+    isAdmin : Boolean
 })
 
 // to create model
