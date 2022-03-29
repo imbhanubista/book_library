@@ -8,6 +8,7 @@ const booksSchema = mongoose.Schema({
     publication: String,
     edition: String,
     category: String,
+    cover_photo : String,
     created_by : String
     
 })

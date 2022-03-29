@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const purchaseSchema = mongoose.Schema({
     book_id : String,
     user_id : String,
-    purchase_date : Date()
+    purchase_date : Date
 })
 
 // model create 

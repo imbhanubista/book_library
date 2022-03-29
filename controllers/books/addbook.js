@@ -23,7 +23,18 @@ try{
             msg: bookValidate.error.details[0].message
         })
     }
+    else if (!req.files){
+        res.json({
+            type:"error",
+            msg:"No File Found"
+        })
+    }
      else {
+         let file = req.files.coverPic
+         let path = "images/bookCover" + file.name
+
+         file.mv("public"+path, (err)=>{})
+
         let booksData = await new Books({
             bname,
             author,
@@ -38,7 +49,8 @@ try{
             type:"Success",
             msg:"Book added successfully", 
             data:{
-                booksData
+                booksData,
+                cover_photo: path
             }
         })
     }

@@ -95,3 +95,39 @@ exports.deleteBooks = async (req,res)=>{
 }
 
 // end of book delete function
+
+
+// start of single book by id 
+
+exports.bookById = async(req,res)=>{
+    let {id} = req.params
+    let token = req.body.token
+
+    try{
+            let tokenData = jwt.verify(token, process.env.JWT_SECRET)
+
+            let bookDetailBYId = await Books.findOne({_id:id})
+            if(bookDetailBYId === null){
+                res.json({
+                    type:"error",
+                    msg:"Book id doesn't matched"
+                })
+            }
+            else{
+            res.json({
+                type:"success",
+                msg:"Book found",
+                data:{
+                    bookDetailBYId
+                }
+            })
+    }}
+    catch(err){
+        res.json({
+            type:"error",
+            msg:err.message
+        })
+    }
+}
+
+// end of single book by id 
