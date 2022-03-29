@@ -80,10 +80,11 @@ exports.deleteBooks = async (req,res)=>{
 
     try{
         let deletetoken = jwt.verify(token, process.env.JWT_SECRET)
-        if(Users.isAdmin ===false){
+        let userAdmin = await Users.findOne({_id:deletetoken._id})
+        if(userAdmin.isAdmin === false){
             res.json({
                 type:"error",
-                msg:"Only admin are eligible for this task"
+                msg:"Only admin can perform this task"
             })
         }
         else{
