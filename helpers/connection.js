@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 // lets make a function to connect our app with database
 
 const connectMe = ()=>{
-    let userData = "mongodb://localhost:27017/school_data"
+    let userData = process.env.DB_URL
     // lets connet database
     mongoose.connect(userData,(err,success)=>{
         if(err){
