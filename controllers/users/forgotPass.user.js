@@ -2,13 +2,15 @@ const Users = require('../../models/users.models')
 const ForgotPassword = require('../../models/forgotPass.model')
 
 // for code generator
-const {nanoid} = require('nanoid')
+const {customAlphabet} = require('nanoid')
+const { mailMe } = require('../../helpers/mail.helper')
 
 exports.forgotPass =async(req,res)=>{
-    let {email} = req.query
-    let code =  nanoid(4)
+    let {email} = req.body
+    let code =  customAlphabet("0123456789",4)()
     // console.log(code);
     let userEmail = await Users.findOne({email})
+    console.log(code)
    
     // to check email exist or not 
     if(userEmail !== null){
@@ -17,8 +19,9 @@ exports.forgotPass =async(req,res)=>{
                     email,
                     code 
                 }).save()
+                mailMe(email, "Reset Password!!", "Your reset code is  "+code)
                 res.json({
-                    type:"error",
+                    type:"success",
                     msg:"Reset code is sent to" + email
                 })
         }

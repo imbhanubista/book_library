@@ -22,6 +22,7 @@ exports.createUsers = async (req, res) => {
   // let password = req.body.password
 
   let { name, email, age, sex, address, phone, password } = req.body;
+  console.log(req.body);
   // to validate using joi
   let userValidate = userValidator.validate({
     name,

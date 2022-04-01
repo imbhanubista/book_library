@@ -4,7 +4,8 @@ const app = express()
 require('dotenv').config()
 // to define the port
 const port = process.env.PORT || 6000
-
+const cors = require('cors')
+app.use(cors())
 // helmet for security purpose
 const helmet = require('helmet')
 app.use(helmet())

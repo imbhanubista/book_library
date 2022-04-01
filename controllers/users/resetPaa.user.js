@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt')
 const { updatePassValidator } = require('../../helpers/validator.helper')
 
 exports.resetPass = async (req,res)=>{
-    let {email} = req.query
-    let {code,password,cpassword} = req.body
+    // let {email} = req.query
+    let {code,password,cpassword,email} = req.body
     let validPass = updatePassValidator.validate({
         password,
         cpassword
