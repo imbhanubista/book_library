@@ -18,7 +18,7 @@ const mailMe =(to,subject,text)=>{
     }
     transporter.sendMail(mailOption, (err,info)=>{
         if(err){
-            console.log("Error while sending mail");
+            console.log(err.message );
         }
         else{
             console.log("Mail Sent successfully");
