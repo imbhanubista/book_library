@@ -33,7 +33,7 @@ const joi = require('joi')
  const addBookVerify = joi.object({
      bname: joi.string().required(),
      author: joi.string().required(),
-     edition: joi.string().alphanum().required(),
+     edition: joi.string().required(),
      publication: joi.string().required(),
      category: joi.string().required()
  })

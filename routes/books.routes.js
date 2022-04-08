@@ -1,12 +1,12 @@
 const { addbook } = require('../controllers/books/addbook');
-const { showAllBooks, updateBooksDetails, deleteBooks, bookById } = require('../controllers/books/books.controller');
+const { showAllBooks, updateBooksDetails, deleteBooks, bookById, purchasedBook } = require('../controllers/books/books.controller');
 const { bookPurchase } = require('../controllers/books/purchaseBook.controller');
 
 const bookRouter = require('express').Router()
 
 
 // to get all the user 
-bookRouter.get('/all_books', showAllBooks)
+bookRouter.post('/all_books', showAllBooks)
 
 // to add books
 bookRouter.post('/add_book', addbook)
@@ -22,6 +22,9 @@ bookRouter.get('/delete_book/:id', deleteBooks)
 
 // book purchase 
 bookRouter.post('/book_purchase/:id', bookPurchase)
+
+// get purchased book
+bookRouter.post('/purchased', purchasedBook)
 
 
 

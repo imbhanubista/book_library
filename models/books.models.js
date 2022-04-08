@@ -10,7 +10,6 @@ const booksSchema = mongoose.Schema({
     category: String,
     cover_photo : String,
     created_by : String
-    
 })
 
 // to create model 

@@ -31,7 +31,7 @@ try{
     }
      else {
          let file = req.files.coverPic
-         let path = "images/bookCover" + file.name
+         let path = "/images/bookCover" + file.name
 
          file.mv("public"+path, (err)=>{})
 
@@ -41,6 +41,7 @@ try{
             edition,
             publication,
             category,
+            cover_photo:path,
             created_by : tokenData._id
             // Verified : bookAddedBy.name
 

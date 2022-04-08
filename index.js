@@ -3,12 +3,12 @@ const app = express()
 // for .env file
 require('dotenv').config()
 // to define the port
-const port = process.env.PORT || 6000
+const port = process.env.PORT || 5000
 const cors = require('cors')
 app.use(cors())
 // helmet for security purpose
-const helmet = require('helmet')
-app.use(helmet())
+// const helmet = require('helmet')
+// app.use(helmet())
 
 // to compress response
 var compress = require('compression')
