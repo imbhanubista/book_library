@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Users = require('./users.models')
 
 // to create schema
 
@@ -9,7 +10,7 @@ const booksSchema = mongoose.Schema({
     edition: String,
     category: String,
     cover_photo : String,
-    created_by : String
+    created_by : {type:String, ref:Users}
 })
 
 // to create model 

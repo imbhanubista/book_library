@@ -11,7 +11,8 @@ exports.showAllBooks = async (req,res)=>{
     let token = req.body.token
     try{
     let tokenVerify = jwt.verify(token, process.env.JWT_SECRET)
-            let allBooks = await Books.find({}).lean()
+            let allBooks = await Books.find({}).populate("created_by").lean()
+            console.log(allBooks)
             let user = []
             for(let items of allBooks){
                 let data = await Users.findOne({_id:items.created_by})
