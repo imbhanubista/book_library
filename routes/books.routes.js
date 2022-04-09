@@ -18,7 +18,7 @@ bookRouter.get("/book_by_id/:id", bookById)
 bookRouter.post('/update_book/:id', updateBooksDetails)
 
 // delete routes
-bookRouter.get('/delete_book/:id', deleteBooks)
+bookRouter.post('/delete_book/:id', deleteBooks)
 
 // book purchase 
 bookRouter.post('/book_purchase/:id', bookPurchase)

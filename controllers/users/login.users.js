@@ -37,7 +37,8 @@ exports.logIn = async(req,res)=>{
                 mailMe(email, "Logged In", "Somebody logged in to your account")
                 let token = jwt.sign({
                     email : registerUser.email,
-                    _id : registerUser._id
+                    _id : registerUser._id,
+                    isAdmin: registerUser.isAdmin
                 },process.env.JWT_SECRET,{
                     expiresIn : "1d"
                 })
@@ -47,6 +48,7 @@ exports.logIn = async(req,res)=>{
                 data:{
                     name: registerUser.name,
                     email: registerUser.email,
+                    isAdmin: registerUser.isAdmin,
                     token
                 }
 
