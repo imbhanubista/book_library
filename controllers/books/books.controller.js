@@ -181,3 +181,11 @@ exports.purchasedBook = async(req,res)=>{
     })
    }
 }
+// end of purchase list
+
+// // start of searching 
+// exports.searchByName = async(req,res)=>{
+
+// }
+
+// // end of searching
