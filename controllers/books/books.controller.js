@@ -155,7 +155,7 @@ exports.purchasedBook = async(req,res)=>{
     let token = req.body.token
    try{
     let tokenData = jwt.verify(token, process.env.JWT_SECRET)
-    let allBooksP = await purchase.find({}).lean()
+    let allBooksP = await purchase.find({user_id:tokenData._id}).lean()
 
     // to get books details from book id
     let allBooksD = []
@@ -164,7 +164,7 @@ exports.purchasedBook = async(req,res)=>{
         console.log(detailData,'booooood')
         allBooksD= [...allBooksD,{...detailData,...key}]
     }
-    let particularData = await purchase.find({user_id:tokenData._id}).lean()
+    // let particularData = await purchase.find({user_id:tokenData._id}).lean()
     // console.log(particularData)
     res.json({
         type :"success",
