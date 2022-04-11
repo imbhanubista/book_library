@@ -16,6 +16,7 @@
 
 . Hashing Password using bcrypt
 . Verifying input field by joi validation
+. Mongoose reference and populate 
 . to use express-fileupload for file Upload
 . nanoid to generate unique id
 . jsonwebtoken to generate jwt token
