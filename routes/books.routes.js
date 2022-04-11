@@ -1,5 +1,5 @@
 const { addbook } = require('../controllers/books/addbook');
-const { showAllBooks, updateBooksDetails, deleteBooks, bookById, purchasedBook } = require('../controllers/books/books.controller');
+const { showAllBooks, updateBooksDetails, deleteBooks, bookById, purchasedBook, dashboard } = require('../controllers/books/books.controller');
 const { bookPurchase } = require('../controllers/books/purchaseBook.controller');
 
 const bookRouter = require('express').Router()
@@ -26,6 +26,7 @@ bookRouter.post('/book_purchase/:id', bookPurchase)
 // get purchased book
 bookRouter.post('/purchased', purchasedBook)
 
-
+// for dashboard
+bookRouter.post('/dashboard', dashboard)
 
 module.exports = bookRouter;

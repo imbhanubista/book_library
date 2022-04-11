@@ -181,11 +181,33 @@ exports.purchasedBook = async(req,res)=>{
     })
    }
 }
-// end of purchase list
 
-// // start of searching 
-// exports.searchByName = async(req,res)=>{
+// dashboard start
+exports.dashboard = async(req,res)=>{
+    let token = req.body.token
+  try{
+    let tokenData = jwt.verify(token, process.env.JWT_SECRET)
+    let totalBooks = await Books.countDocuments({})
+    let totalPurchase = await purchase.countDocuments({})
+    // let totalBookLength = totalBooks.length
+    res.json({
+        type:"success",
+        msg:"Total length",
+        data:
+            {
+                totalBooks,
+                totalPurchase
+            }
+        
+    })
+  }
+  catch(err){
+    res.json({
+        type:"error",
+        msg: err.message
+    })
+  }
+}
 
-// }
 
-// // end of searching
+// end dashboard
